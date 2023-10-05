@@ -22,6 +22,9 @@ const findAll = async () => {
     return posts;
   }
 
+  posts = await _getPosts();
+  await model.saveAll(posts);
+  return posts;
 }
 
 module.exports = {
