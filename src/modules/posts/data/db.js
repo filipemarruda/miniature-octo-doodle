@@ -51,8 +51,22 @@ const insert = async (post) => {
   });
 }
 
+const selectAll = async () => {
+  return new Promise(async (resolve, reject) => {
+    const db = await _getConnection();
+    const sql = "SELECT * FROM posts";
+    db.all(sql, [], (err, rows) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(rows);
+    });
+    db.close();
+  });
+}
 
 module.exports = {
   createTable,
   insert,
+  selectAll
 }
