@@ -14,3 +14,28 @@ const _getConnection = async () => {
     });
   });
 }
+
+const createTable = async () => {
+  return new Promise(async (resolve, reject) => {
+    const db = await _getConnection();
+    const sqlCreate = `CREATE TABLE IF NOT EXISTS posts (
+      id INTEGER,
+      user_id INTEGER,
+      title TEXT,
+      body TEXT,
+      image TEXT
+    );`;
+    db.run(sqlCreate, err => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+    db.close();
+  });
+}
+
+module.exports = {
+  createTable,
+}
