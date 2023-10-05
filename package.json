@@ -1,0 +1,20 @@
+{
+  "name": "scalable_path",
+  "version": "1.0.0",
+  "description": "Just an example of using user and post api from scalable path test",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node src/app.js"
+  },
+  "author": "filipemarruda",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "29.7.0"
+  },
+  "dependencies": {
+    "express": "4.18.2",
+    "node-fetch": "2.6.1",
+    "sqlite3": "5.1.6"
+  }
+}
