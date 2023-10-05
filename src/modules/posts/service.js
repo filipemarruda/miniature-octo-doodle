@@ -8,6 +8,13 @@ const _getUserMap = async () => {
   }, {});
 }
 
+const _getPosts = async () => {
+  const usersMap = await _getUserMap();
+  return (await api.fetchPosts()).map(post => {
+    post.authorName = usersMap[post.userId].name;
+    return post;
+  });
+}
 
 const findAll = async () => {
   let posts = await model.getAll();
