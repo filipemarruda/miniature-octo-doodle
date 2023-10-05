@@ -36,6 +36,23 @@ const createTable = async () => {
   });
 }
 
+const insert = async (post) => {
+  return new Promise(async (resolve, reject) => {
+    const db = await _getConnection();
+    const sql = `INSERT INTO posts (id, user_id, title, body, image) VALUES (?, ?, ?, ?, ?);`;
+    db.run(sql, [post.id, post.user_id, post.title, post.body, post.image], (err, row) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+    db.close();
+  });
+}
+
+
 module.exports = {
   createTable,
+  insert,
 }
